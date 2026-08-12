@@ -68,10 +68,10 @@ resource "aws_instance" "web_server" {
   # user_data runs a script when the instance first starts
   user_data = <<-EOF
     #!/bin/bash
-    apt update -y
-    apt install -y httpd
-    systemctl start httpd
-    systemctl enable httpd
+    sudo apt update -y
+    sudo apt install -y httpd
+    sudo systemctl start httpd
+    sudo systemctl enable httpd
     echo '<h1>Hello from Terraform!</h1>' > /var/www/html/index.html
   EOF
  
