@@ -10,7 +10,7 @@ data "aws_ami" "ubuntu" {
  
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-*-*-amd64-server-*"]
+    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-resolute-26.04-amd64-server-*"]
   }
   
   filter {
@@ -68,8 +68,8 @@ resource "aws_instance" "web_server" {
   # user_data runs a script when the instance first starts
   user_data = <<-EOF
     #!/bin/bash
-    yum update -y
-    yum install -y httpd
+    apt update -y
+    apt install -y httpd
     systemctl start httpd
     systemctl enable httpd
     echo '<h1>Hello from Terraform!</h1>' > /var/www/html/index.html
