@@ -23,7 +23,7 @@ provider "aws" {
 # Syntax: resource "PROVIDER_TYPE" "YOUR_LOCAL_NAME" { ... }
 
 resource "aws_s3_bucket" "my_first_bucket" {
-  bucket = "my-terraform-learning-bucket-12345"  # Must be globally unique!
+  bucket = "my-first-terraform-bucket-2026-08-13"  # Must be globally unique!
  
   tags = {
     Name        = "My First Terraform Bucket"
