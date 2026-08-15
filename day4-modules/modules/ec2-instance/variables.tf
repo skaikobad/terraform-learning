@@ -1,36 +1,3 @@
-# DATA SOURCE: Fetch the latest Ubuntu AMI automatically
-# Data sources READ existing AWS resources - they don't create anything
-# This is better than hardcoding an AMI ID (which changes per region)
-
-data "aws_ami" "ubuntu" {
-  most_recent = true
-  owners      = ["099720109477"]  # Canonical's AWS account ID for Ubuntu
- 
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-resolute-26.04-amd64-server-*"]
-  }
-  
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-}
-
-#Finds the AWS account's default VPC
-data "aws_vpc" "default" {
-  default = true
-}
-#Finds subnets in the default VPC, by filtering on vpc-id.
-#It returns a list of subnet IDs, accessible as data.aws_subnets.default.ids. 
-data "aws_subnets" "default" {
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.default.id]
-  }
-}
-
-
 # These are the INPUT PARAMETERS for our module
  variable "instance_name" {
   description = "Name tag for the EC2 instance"
