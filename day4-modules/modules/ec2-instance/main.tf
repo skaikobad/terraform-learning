@@ -40,26 +40,29 @@ resource "aws_security_group" "instance_sg" {
   vpc_id      = var.vpc_id != null ? var.vpc_id : data.aws_vpc.default.id   # Use the provided VPC ID if set, otherwise use the default VPC
  
   ingress {
+    description = "SSH access from allowed CIDR"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = [var.allowed_ssh_cidr]
     }
   ingress {
+    description = "HTTP access from anywhere"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
     }
     ingress {
+    description = "HTTPS access from anywhere"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
     }
 
- 
   egress {
+    description = "Allow all outbound traffic"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"

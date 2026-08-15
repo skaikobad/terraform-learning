@@ -1,4 +1,5 @@
 # These are the INPUT PARAMETERS for our module
+
  variable "instance_name" {
   description = "Name tag for the EC2 instance"
   type        = string
