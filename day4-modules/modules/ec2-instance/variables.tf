@@ -40,7 +40,7 @@ data "aws_subnets" "default" {
 variable "ami_id" {
   description = "The AMI ID to use for the EC2 instance"
   type        = string
-  default     = data.aws_ami.ubuntu.id  # Default to the latest Ubuntu AMI if not specified
+  default     = null  # Will use the latest Ubuntu AMI if not specified
 }
 variable "instance_type" {
   description = "EC2 instance type"
