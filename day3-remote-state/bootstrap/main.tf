@@ -2,19 +2,6 @@
 # This creates the S3 bucket and DynamoDB table for our state backend
 # IMPORTANT: This bootstrap config uses LOCAL state
  
-terraform {
-  required_providers {
-    aws = { 
-        source = "hashicorp/aws"
-        version = "~> 5.0" 
-        }
-  }
-}
- 
-provider "aws" { 
-    region = "us-west-2" 
-    }
- 
 # Random suffix to make bucket name globally unique
 resource "random_id" "suffix" {
   byte_length = 4
