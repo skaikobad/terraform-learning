@@ -77,7 +77,7 @@ resource "aws_instance" "ec2_instance" {
   ami                    = var.ami_id != null ? var.ami_id : data.aws_ami.ubuntu.id  # Use the provided AMI ID if set, otherwise use the latest Ubuntu AMI
   instance_type          = var.instance_type
   key_name               = var.key_name
-  subnet_id              = var.subnet_id != null ? var.subnet_id : data.aws_subnets.default.ids[0]  # Use the provided subnet ID if set, otherwise use the first default subnet
+  #subnet_id              = var.subnet_id != null ? var.subnet_id : data.aws_subnets.default.ids[0]  # Use the provided subnet ID if set, otherwise use the first default subnet
   vpc_security_group_ids = [aws_security_group.instance_sg.id]
   root_block_device {
     volume_size = var.volume_size

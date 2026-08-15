@@ -23,7 +23,6 @@ variable "vpc_id" {
   type        = string
   default     = null  # Will use default VPC if not specified
 }
-
 variable "subnet_id" {
   description = "Subnet ID for the EC2 instance. If not specified, uses the default subnet"
   type        = string
